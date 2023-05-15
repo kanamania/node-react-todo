@@ -75,18 +75,6 @@ const Header = () => {
                                 Logout
                             </LoadingButton>
                         )}
-                        {user && (
-                            <Box sx={{ml: 4}}>
-                                <Tooltip
-                                    title="Profile"
-                                    onClick={() => navigate("/profile")}
-                                >
-                                    <IconButton sx={{p: 0}}>
-                                        <Avatar alt="Remy Sharp" src="/static/images/avatar/2.jpg"/>
-                                    </IconButton>
-                                </Tooltip>
-                            </Box>
-                        )}
                     </Box>
                 </Toolbar>
             </Container>

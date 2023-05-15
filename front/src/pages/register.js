@@ -38,7 +38,7 @@ const registerSchema = object({
         .email("Email Address is invalid"),
     password: string()
         .min(1, "Password is required")
-        .min(8, "Password must be more than 8 characters")
+        .min(6, "Password must be more than 8 characters")
         .max(32, "Password must be less than 32 characters"),
     passwordConfirm: string().min(1, "Please confirm your password")
 }).refine(data => data.password === data.passwordConfirm, {
@@ -80,9 +80,9 @@ const RegisterPage = () => {
         // ? Executing the RegisterUser Mutation
         setIsLoading(true);
         const {email, password} = values;
-        register(...values).then(res => {
+        register(values.name, values.email, values.password).then(res => {
             setIsLoading(false);
-            if (res.status === 'success') {
+            if (res.data?.status === 'success') {
                 setIsSuccess(true);
                 login(email, password).then(r => {
                     if(r.status === 'success'){

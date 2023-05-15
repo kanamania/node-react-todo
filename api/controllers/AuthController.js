@@ -30,14 +30,14 @@ const changePassword = (req, res) => console.log('change password.');
 const verify = (req, res) => console.log('email confirmation');
 const register = (req, res) => {
     let userBody = req.body;
-    userBody.emailConfirmation = hash('sha256').update(`${userBody.email}-${userBody.name}-${Date.now()}`).digest('hex');
+    userBody.emailConfirmation = bcrypt.hashSync(`${userBody.email}-${userBody.name}-${Date.now()}`, 10);
     return User.create(userBody).then((user) => {
         if(user) {
             transport.sendMail({
                 from: 'todo@todemo.io',
                 to: user.email,
                 subject: 'Welcome to ToDo Guys',
-                text: `<p>Hello ${receiver.name},</p>` +
+                text: `<p>Hello ${user.name},</p>` +
                     `<p>Thanks for registering to our tasks management platform.</p>` +
                     `<p>Please confirm your email by <a href="${process.env.APP_URL}/auth/email/confirm/${user.emailConfirmation}">clicking here</a></p>` +
                     `<br>` +
@@ -45,15 +45,15 @@ const register = (req, res) => {
                     `ToDo Guys.`
             });
             const {password, ...data} = user._doc;
-            return res.sendStatus(201).send({status: 'success', message: 'Registration successfully', data});
+            return res.send({status: 'success', message: 'Registration successfully', data});
         }
         })
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 const authGate = (req, res, next) => {
     jwt.verify(req.headers['authorization'], req.app.get('secretKey'), function (err, decoded) {
         if (err) {
-            res.sendStatus(401).json({status: "error", message: err.message, data: null});
+            res.sendStatus(401);
         } else {
             req.body.userId = decoded.id;
             next();

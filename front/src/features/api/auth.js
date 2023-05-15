@@ -20,11 +20,9 @@ export const login = (email, password) => {
         });
 };
 export const register = async (name, email, password) => {
-    return await axios(`${API_URL}/auth/register`,
-        {
-            method: "POST",
-            body: {name, email, password},
-        }).catch(error => {
+    return await axios.post(`${API_URL}/auth/register`,
+        {name, email, password}
+    ).catch(error => {
         toast.error('Experiencing server issue at the moment. Please try again later.', {
             position: "top-right"
         });
@@ -32,11 +30,8 @@ export const register = async (name, email, password) => {
     });
 };
 export const forgot = async (email) => {
-    return await axios(`${API_URL}/auth/forgot`,
-        {
-            method: "POST",
-            body: {email},
-        }).catch(error => {
+    return await axios.post(`${API_URL}/auth/forgot`,
+        {email}).catch(error => {
         toast.error('Experiencing server issue at the moment. Please try again later.', {
             position: "top-right"
         });
@@ -44,10 +39,8 @@ export const forgot = async (email) => {
     });
 };
 export const reset = async (email, code) => {
-    return await axios(`${API_URL}/auth/reset`,
-        {
-            method: "POST",
-            body: {email, code},
+    return await axios.post(`${API_URL}/auth/reset`,
+        {email, code
         }).catch(error => {
         toast.error('Experiencing server issue at the moment. Please try again later.', {
             position: "top-right"
@@ -56,10 +49,7 @@ export const reset = async (email, code) => {
     });
 };
 export const verifyEmail = async (code) => {
-    return await axios(`${API_URL}/auth/verify?code=${code}`,
-        {
-            method: "GET",
-        }).catch(error => {
+    return await axios.get(`${API_URL}/auth/verify?code=${code}`).catch(error => {
         toast.error('Experiencing server issue at the moment. Please try again later.', {
             position: "top-right"
         });
@@ -67,10 +57,8 @@ export const verifyEmail = async (code) => {
     });
 };
 export const getDetails = async () => {
-    return await axios(`${API_URL}/users/me`,
-        {
-            method: "POST",
-            body: {},
+    return await axios.post(`${API_URL}/users/me`,
+        {}, {
             headers: {
                 "Authorization": `${token}`
             }
