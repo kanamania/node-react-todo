@@ -175,13 +175,11 @@ const inviteTodo = async (req, res) => {
                 subject: `Todo List Invitation: ${list.title}`,
                 html: `<p>Hello ${receiver.name},</p>` +
                     `<p>You have been invited to collaborate on todo list: <b>${list.title}</b> by <b>${sender.name}</b></p>` +
-                    `<p>Please accept this invite by <a href="${process.env.APP_URL}/todos/invite/accept/${list._id}/${receiver._id}">click here</a></p>` +
                     `<br>` +
                     `Best wishes,<br>` +
                     `ToDo Guys.`,
                 text: `Hello ${receiver.name},\r\n` +
                     `You have been invited to collaborate on todo list: ${list.title} by ${sender.name}\r\n` +
-                    `Please accept this invite by going to this link ${process.env.APP_URL}/todos/invite/accept/${list._id}/${receiver._id} \r\n` +
                     `\r\n` +
                     `Best wishes,\r\n` +
                     `ToDo Guys.\r\n`
