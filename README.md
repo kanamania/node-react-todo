@@ -11,6 +11,8 @@
   `path/to/docker-compose run --rm --service-ports api_runner i`
   
   `path/to/docker-compose run --rm --service-ports ui_runner i`
+- 
+  `path/to/docker-compose restart`
 
 - Now you can access the app on http://localhost:8000 and the api part on http://localhost:9000
 If anything is unclear don't hesitate to contact me for further assistance.
