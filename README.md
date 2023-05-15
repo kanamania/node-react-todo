@@ -9,3 +9,5 @@
 - Once you the above command complete without any error you can access the app on http://localhost:8000 and the api part on http://localhost:9000
 
 If anything is unclear don't hesitate to contact me for further assistance.
+
+Note: normally I would not include api/.env file but to simplify you testing I have included it.
