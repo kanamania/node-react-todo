@@ -8,7 +8,7 @@ const searchTodos = async (req, res) => {
         message: 'Todo Retrieved',
         data: list
     }))
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 const getAll = async (req, res) => {
     let sort = null;
@@ -89,13 +89,13 @@ const getTodo = async (req, res) => {
             data: model,
             invited: invited ?? [],
         })
-    }).catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+    }).catch((err) => res.sendStatus(500));
 };
 const createTodo = async (req, res) => {
     const todo = new Todo(req.body);
     todo.createdBy = req.body.userId;
     return Todo.create(todo).then((model) => res.send({status: 'success', message: 'Todo Created'}))
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 const editTodo = (req, res) => {
     let data = req.body;
@@ -124,7 +124,7 @@ const toggleTodo = (req, res) => {
             {
                 $set: data,
             }).then(() => res.json({status: 'success', message}))
-            .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+            .catch((err) => res.sendStatus(500));
     });
 };
 const deleteInviteTodo = async (req, res) => {
@@ -145,7 +145,7 @@ const deleteInviteTodo = async (req, res) => {
         },
         {new: false})
         .then(() => res.send({status: 'success', message: "Todo invite deleted"}))
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 const inviteTodo = async (req, res) => {
     const list = await Todo.findOne({_id: req.params.todoId, createdBy: req.body.userId});
@@ -191,7 +191,7 @@ const inviteTodo = async (req, res) => {
                 res.json({status: 'success', message: "Todo invite sent"})
             });
         })
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 const removeTodo = (req, res) => {
     let data = req.body;
@@ -203,7 +203,7 @@ const removeTodo = (req, res) => {
             $set: data,
         },
         {new: false}).then(() => res.json({status: 'success', message: "Todo Deleted"}))
-        .catch((err) => res.sendStatus(500).send({status: 'error', message: err}));
+        .catch((err) => res.sendStatus(500));
 };
 
 module.exports = {

@@ -25,8 +25,8 @@ import {zodResolver} from "@hookform/resolvers/zod";
 import {toast} from "react-toastify"
 import {useLocation, useNavigate, useParams} from "react-router-dom";
 import InviteDialog from "./InviteDialog";
-import {CURRENT_USER_ID} from "../App";
 
+export const CURRENT_USER_ID = JSON.parse(localStorage.getItem('user'))?._id;
 const SEARCH_DELAY = 250;
 const todoForm = object({
     title: string()

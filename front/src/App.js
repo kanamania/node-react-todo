@@ -12,7 +12,6 @@ import {ToastContainer} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
 import "./App.css"
 
-export const CURRENT_USER_ID = JSON.parse(localStorage.getItem('user'))?._id;
 function App() {
     return (
         <Container id="mainContainer">
