@@ -2,7 +2,7 @@
 
 ## Instructions
 
-- Make sure you have docker and docker-composer installed. Check both [here](https://docs.docker.com/engine/install/ubuntu/) and [here](https://docs.docker.com/compose/install/standalone/) if you are on linux or [here](https://docs.docker.com/desktop/install/windows-install/) for windows
+- Make sure you have `docker` and `docker-composer` installed. Check both [here](https://docs.docker.com/engine/install/ubuntu/) and [here](https://docs.docker.com/compose/install/standalone/) if you are on linux or [here](https://docs.docker.com/desktop/install/windows-install/) for windows
 - Go to the project directory and run the following commands for setting up
   <br>
   `path/to/docker-compose up -d` replace path/to with correct path. (This will download some `360MB`)
