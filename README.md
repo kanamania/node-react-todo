@@ -18,3 +18,4 @@ If anything is unclear don't hesitate to contact me for further assistance.
 Note: <br>
 - `I would have not include api/.env file but to simplify your testing, I have included it.`
 - `Make sure you network connection can download 450MB+`
+- `When you want to test locally, you have to change the api/.env MONGODB_URL or inform me to whitelist your IP address`
