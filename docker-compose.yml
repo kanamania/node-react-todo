@@ -1,0 +1,62 @@
+version: '3.8'
+
+networks:
+  todo_net:
+
+services:
+  api:
+    build:
+      context: ./docker
+      dockerfile: node.dockerfile
+    container_name: api
+    ports:
+      - 9000:9000
+    volumes:
+      - ./api:/var/www/api
+    working_dir: /var/www/api
+    stdin_open: true
+    tty: true
+    entrypoint: ["npm", "run", "start" ]
+    networks:
+      - todo_net
+  front:
+    build:
+      context: ./docker
+      dockerfile: node.dockerfile
+    container_name: front
+    ports:
+      - 8000:8000
+    volumes:
+      - ./front:/var/www/front
+    working_dir: /var/www/front
+    stdin_open: true
+    tty: true
+    entrypoint: ["npm", "run", "start" ]
+    networks:
+      - todo_net
+
+  api_runner:
+    build:
+      context: ./docker
+      dockerfile: node.dockerfile
+    container_name: api_runner
+    working_dir: /var/www/api
+    volumes:
+      - ./api:/var/www/api
+    profiles: ["runner" ]
+    entrypoint: ["npm" ]
+    networks:
+      - todo_net
+
+  ui_runner:
+    build:
+      context: ./docker
+      dockerfile: node.dockerfile
+    container_name: ui_runner
+    working_dir: /var/www/front
+    volumes:
+      - ./front:/var/www/front
+    profiles: ["runner" ]
+    entrypoint: ["npm" ]
+    networks:
+      - todo_net
