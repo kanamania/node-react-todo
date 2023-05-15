@@ -275,7 +275,7 @@ function TodoList() {
             direction="row"
             justify="center"
             alignItems="flex-start">
-            <Grid item xs={12} sm={4} sx={{pr: 5}}>
+            <Grid id="todoForm" item xs={12} sm={4} sx={{pr: 5}}>
                 <Typography variant="h5" sx={{pb: 3}}>Todo Form</Typography>
                 <FormProvider {...todoMethods}>
                     <form onSubmit={() => isEditing ? onAddHandler : onEditHandler}>
@@ -301,12 +301,12 @@ function TodoList() {
                                 minRows={3}/>
                         </Box>
                         {!isEditing && (
-                            <Button
+                            <Button className="todoButton"
                                 onClick={onAddHandler}
                                 variant="outlined" color="secondary" type="submit">Add</Button>
                         )}
                         {isEditing && (
-                            <Button
+                            <Button className="todoButton"
                                 onClick={onEditHandler}
                                 variant="outlined" color="secondary" type="submit">Update</Button>
                         )}
@@ -314,7 +314,7 @@ function TodoList() {
                 </FormProvider>
             </Grid>
 
-            <Grid item xs={12} sm={8}>
+            <Grid id="todoList" item xs={12} sm={8}>
                 <Grid
                     container
                     direction="row"

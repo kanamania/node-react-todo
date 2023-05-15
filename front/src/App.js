@@ -1,4 +1,4 @@
-import {CssBaseline} from "@mui/material"
+import {Container, CssBaseline} from "@mui/material"
 import {BrowserRouter, Route, Routes} from "react-router-dom"
 import Layout from "./features/Layout"
 import ProfilePage from "./pages/profile"
@@ -10,11 +10,12 @@ import EmailVerificationPage from "./pages/verifyemail"
 import AuthGuard from "./features/AuthGuard"
 import {ToastContainer} from "react-toastify"
 import "react-toastify/dist/ReactToastify.css"
+import "./App.css"
 
 export const CURRENT_USER_ID = JSON.parse(localStorage.getItem('user'))?._id;
 function App() {
     return (
-        <>
+        <Container id="mainContainer">
             <CssBaseline/>
             <ToastContainer/>
             <BrowserRouter>
@@ -36,7 +37,7 @@ function App() {
                     </Route>
                 </Routes>
             </BrowserRouter>
-        </>
+        </Container>
     )
 }
 

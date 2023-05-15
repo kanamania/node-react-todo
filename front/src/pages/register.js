@@ -100,8 +100,7 @@ const RegisterPage = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "100vh",
-                backgroundColor: "#5bb15e"
+                paddingTop: "10vh"
             }}
         >
             <Box
@@ -123,7 +122,7 @@ const RegisterPage = () => {
                         letterSpacing: 1
                     }}
                 >
-                    Welcome to ToDo Guys!
+                    Welcome
                 </Typography>
                 <Typography component="h2" sx={{ color: "#e5e7eb", mb: 2 }}>
                     Sign Up To Get Started!

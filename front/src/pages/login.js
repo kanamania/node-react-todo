@@ -78,8 +78,7 @@ const LoginPage = () => {
                 display: "flex",
                 justifyContent: "center",
                 alignItems: "center",
-                height: "100vh",
-                backgroundColor: "#5bb15e"
+                paddingTop: "10vh",
             }}
         >
             <Box

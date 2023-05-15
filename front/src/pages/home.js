@@ -3,7 +3,11 @@ import TodoList from "../features/TodoList";
 
 const HomePage = () => {
     return (
-        <Container maxWidth="lg">
+        <Container
+            sx={{
+                bgcolor: "#fff"
+            }}
+            maxWidth="lg">
             <TodoList />
         </Container>
     )
