@@ -11,7 +11,7 @@ const authenticate = (req, res) => {
             return res.sendStatus(401).json({status: "error", message: "Authentication failed", token: null, user: null});
         }
         if (bcrypt.compareSync(req.body.password, userInfo.password)) {
-            const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), {expiresIn: '24h'});
+            const token = jwt.sign({id: userInfo._id}, req.app.get('secretKey'), {expiresIn: process.env.JWT_EXPIRE_TIME});
             return res.cookie("accessToken", token, {httpOnly: true, secure: true})
                 .json({status: "success", message: "Authenticated", accessToken: token, user: userInfo});
         } else {
